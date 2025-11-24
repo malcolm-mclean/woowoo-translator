@@ -15,7 +15,7 @@ Object.keys(process.env).forEach((key) => {
   }
 });
 
-const assetsDir = path.join(__dirname, "../src/ui");
+const assetsDir = path.join(__dirname, "../src");
 const distDir = path.join(__dirname, "../dist");
 
 const copyAssets = () => {
