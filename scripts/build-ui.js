@@ -5,13 +5,6 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const define = {};
-Object.keys(process.env).forEach((key) => {
-  if (key.startsWith("WOOWOO_")) {
-    define[`process.env.${key}`] = JSON.stringify(process.env[key]);
-  }
-});
-
 const assetsDir = path.join(__dirname, "../src");
 const distDir = path.join(__dirname, "../dist");
 
@@ -39,7 +32,6 @@ esbuild.build({
   entryPoints: [path.join(assetsDir, "app.ts")],
   bundle: true,
   outfile: path.join(distDir, "app.js"),
-  define,
   minify: true,
   format: "esm",
   target: "es2020",
