@@ -22,13 +22,10 @@ interface ChatGptResponse extends Record<string, unknown> {
   }[];
 }
 
-export interface TranslateResponse {
-  translation: string;
-}
-
 const MAX_TEXT_LENGTH = 2000;
 
-export const onTranslatePOST: PagesFunction<Env> = async (context) => {
+/** This MUST stay named `onRequestPost` per Cloudflare docs */
+export const onRequestPost: PagesFunction<Env> = async (context) => {
   try {
     const { request, env } = context;
     const body = (await request.json()) as {
@@ -102,7 +99,8 @@ export const onTranslatePOST: PagesFunction<Env> = async (context) => {
   }
 };
 
-export const onTranslateOPTIONS: PagesFunction = async () => {
+/** This MUST stay named `onRequestOptions` per Cloudflare docs */
+export const onRequestOptions: PagesFunction = async () => {
   return new Response(null, {
     status: 204,
     headers: {
