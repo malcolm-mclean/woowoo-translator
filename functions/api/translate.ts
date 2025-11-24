@@ -1,4 +1,4 @@
-import { PagesFunction, Response } from "@cloudflare/workers-types";
+import { PagesFunction } from "@cloudflare/workers-types";
 
 interface Env {
   OPENAI_API_KEY: string;
@@ -24,7 +24,9 @@ interface ChatGptResponse extends Record<string, unknown> {
 
 const MAX_TEXT_LENGTH = 2000;
 
-/** This MUST stay named `onRequestPost` per Cloudflare docs */
+/** This MUST stay named `onRequestPost` per Cloudflare docs
+ * https://developers.cloudflare.com/pages/functions/api-reference/#onrequests
+ */
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   try {
     const { request, env } = context;
@@ -99,7 +101,9 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   }
 };
 
-/** This MUST stay named `onRequestOptions` per Cloudflare docs */
+/** This MUST stay named `onRequestOptions` per Cloudflare docs
+ * https://developers.cloudflare.com/pages/functions/api-reference/#onrequests
+ */
 export const onRequestOptions: PagesFunction = async () => {
   return new Response(null, {
     status: 204,

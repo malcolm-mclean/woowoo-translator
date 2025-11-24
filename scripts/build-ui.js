@@ -2,11 +2,8 @@ import esbuild from "esbuild";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import dotenv from "dotenv";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-dotenv.config();
 
 const define = {};
 Object.keys(process.env).forEach((key) => {
