@@ -33,8 +33,7 @@ const previousTranslationsStore = {
     const translations = data ? JSON.parse(data) : [];
     const now = Date.now();
 
-    // return translations.filter((t: PreviousTranslation) => t.expires > now);
-    return translations;
+    return translations.filter((t: PreviousTranslation) => t.expires > now);
   },
   addTranslation: (translation: PreviousTranslation) => {
     const currentTranslations = previousTranslationsStore.getAll();
@@ -189,6 +188,10 @@ const onSubmit = async () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text: value }),
     });
+
+    if (!response.ok) {
+      throw new Error("Translation request failed");
+    }
 
     const data = (await response.json()) as { translation: string };
     translationElement.textContent = data.translation;
