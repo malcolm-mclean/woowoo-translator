@@ -9,31 +9,32 @@
   <body>
     <main>
       <h1>Woowoo Translator</h1>
-      <div id="translator-form">
+      <div class="translator-form">
         <div class="input-section">
-          <textarea
-            id="input"
-            placeholder="Enter text to translate..."
-          ></textarea>
+          <div class="input-container">
+            <textarea
+              id="input"
+              placeholder="Enter text to translate..."
+              aria-label="Enter text to translate"
+              maxlength="2000"
+            ></textarea>
+            <p id="remaining-characters" style="display: none">
+              <span id="current-character-count">0</span>/2000
+            </p>
+          </div>
           <button type="submit" id="submit-button" class="button-primary">
             Translate
           </button>
         </div>
         <div class="output-section">
-          <pre id="output"></pre>
+          <pre id="translation"></pre>
         </div>
       </div>
-      <div class="suggestions-container">
-        <h2>or try a suggestion:</h2>
-        <div id="suggestions">
-          <button>This is a super duper long button</button>
-          <button>Sup dawg</button>
-          <button>
-            This is medium length but still kinda long jk very long
-          </button>
-          <button>yes this is a button</button>
-        </div>
-      </div>
+      <article
+        id="previous-translations-container"
+        style="display: none"
+      ></article>
+      <article id="suggestions-container" style="display: none"></article>
     </main>
     <script type="module" src="app.js"></script>
   </body>
