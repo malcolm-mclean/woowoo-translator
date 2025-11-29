@@ -77,12 +77,12 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     });
 
     if (!chatgptResponse.ok) {
-      console.error("OpenAI API error:", await chatgptResponse.text());
+      const response = await chatgptResponse.text();
       return new Response(
         JSON.stringify({
           error: "Translation service error",
           chatGptRequest,
-          chatgptResponse: await chatgptResponse.text(),
+          chatgptResponse: response,
         }),
         { status: 502, headers: { "Content-Type": "application/json" } }
       );
