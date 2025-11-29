@@ -82,7 +82,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         JSON.stringify({
           error: "Translation service error",
           chatGptRequest,
-          chatgptResponse,
+          chatgptResponse: await chatgptResponse.text(),
         }),
         { status: 502, headers: { "Content-Type": "application/json" } }
       );
