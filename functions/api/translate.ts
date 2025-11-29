@@ -5,11 +5,11 @@ interface Env {
 }
 
 interface ChatGptRequest {
-  input: { role: "system" | "user"; content: string }[];
-  max_output_tokens: number;
-  max_tool_calls: number;
   model: string;
-  store: boolean;
+  input: { role: "system" | "user"; content: string }[];
+  max_output_tokens?: number;
+  max_tool_calls?: number;
+  store?: boolean;
 }
 
 // https://platform.openai.com/docs/api-reference/responses/create
@@ -60,14 +60,11 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     }
 
     const chatGptRequest: ChatGptRequest = {
+      model: "gpt-4.1-mini",
       input: [
         { role: "system", content: systemPrompt },
         { role: "user", content: `${body.text}` },
       ],
-      max_output_tokens: 2000,
-      max_tool_calls: 1,
-      model: "gpt-4.1-mini",
-      store: false,
     };
 
     const chatgptResponse = await fetch("https://api.openai.com/v1/responses", {
