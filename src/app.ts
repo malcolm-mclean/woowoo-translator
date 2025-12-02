@@ -100,6 +100,7 @@ const setupPreviousTranslations = () => {
   const translations = previousTranslationsStore.getAll();
 
   if (translations.length === 0) {
+    previousTranslationsContainer.style.display = "none";
     return;
   }
 
@@ -139,6 +140,7 @@ const setupPreviousTranslations = () => {
   });
 
   previousTranslationsContainer.appendChild(translationsList);
+  previousTranslationsContainer.removeAttribute("style");
 };
 
 const setupSuggestions = () => {
