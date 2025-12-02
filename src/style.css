@@ -68,6 +68,9 @@
   --section-gap-size: 5.625rem;
   --textarea-min-height: 16rem;
   --textarea-border-radius: 0.375rem;
+
+  /* https://css-tricks.com/the-fixed-background-attachment-hack/#comment-1781750 */
+  background-attachment: fixed;
 }
 
 @keyframes gradientFlow {
@@ -313,6 +316,10 @@ button:active {
   position: relative;
   z-index: 1;
   flex: 1 0 auto;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 #suggestions-container button:hover,
