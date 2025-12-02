@@ -85,6 +85,7 @@ const onPreviousTranslationDelete = (e: Event) => {
 
   previousTranslationsStore.removeTranslation(id);
   setupPreviousTranslations();
+  setupSuggestions();
 };
 
 const setupPreviousTranslations = () => {
@@ -152,8 +153,11 @@ const setupSuggestions = () => {
 
   const suggestions = [
     "The sky looks blue but it isn't, what does it mean?",
-    "I felt angry when you farted",
     "I love the holidays and spending time with family",
+    "Feeling blue left on red",
+    "You smell really bad and I wish you would take a shower",
+    "A rolling stone gathers no moss but it sure gathers speed",
+    "That's just like your opinion, man",
   ];
 
   const title = document.createElement("h2");
